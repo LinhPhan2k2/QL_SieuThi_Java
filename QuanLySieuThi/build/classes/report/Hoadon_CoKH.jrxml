@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="14df45f8-6d1b-4bc6-9c03-3bc51f5bc02c">
+	<property name="ireport.zoom" value="1.6105100000000028"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MAHD" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     HANGHOA."MAHH" AS HANGHOA_MAHH,
+     HANGHOA."TENHH" AS HANGHOA_TENHH,
+     HANGHOA."GIABAN" AS HANGHOA_GIABAN,
+     HOADON."MAHD" AS HOADON_MAHD,
+     HOADON."MANV" AS HOADON_MANV,
+     HOADON."MAKH" AS HOADON_MAKH,
+     HOADON."NGAYBAN" AS HOADON_NGAYBAN,
+     HOADON."TONGTIEN" AS HOADON_TONGTIEN,
+     HOADON_HANGHOA."MAHD" AS HOADON_HANGHOA_MAHD,
+     HOADON_HANGHOA."MAHH" AS HOADON_HANGHOA_MAHH,
+     HOADON_HANGHOA."SOLUONG" AS HOADON_HANGHOA_SOLUONG,
+     HOADON_HANGHOA."GIABAN" AS HOADON_HANGHOA_GIABAN,
+     HOADON_HANGHOA."THANHTIEN" AS HOADON_HANGHOA_THANHTIEN,
+     KHACHHANG."MAKH" AS KHACHHANG_MAKH,
+     KHACHHANG."TENKH" AS KHACHHANG_TENKH,
+     KHACHHANG."SODT" AS KHACHHANG_SODT,
+     NHANVIEN."MANV" AS NHANVIEN_MANV,
+     NHANVIEN."TENNV" AS NHANVIEN_TENNV,
+     KHACHHANG."DIEM" AS KHACHHANG_DIEM
+FROM
+     "dbo"."HANGHOA" HANGHOA INNER JOIN "dbo"."HOADON_HANGHOA" HOADON_HANGHOA ON HANGHOA."MAHH" = HOADON_HANGHOA."MAHH"
+     INNER JOIN "dbo"."HOADON" HOADON ON HOADON_HANGHOA."MAHD" = HOADON."MAHD"
+     INNER JOIN "dbo"."KHACHHANG" KHACHHANG ON HOADON."MAKH" = KHACHHANG."MAKH"
+     INNER JOIN "dbo"."NHANVIEN" NHANVIEN ON HOADON."MANV" = NHANVIEN."MANV"
+WHERE
+      HOADON."MAHD"=$P{MAHD}]]>
+	</queryString>
+	<field name="HANGHOA_MAHH" class="java.lang.Integer"/>
+	<field name="HANGHOA_TENHH" class="java.lang.String"/>
+	<field name="HANGHOA_GIABAN" class="java.math.BigDecimal"/>
+	<field name="HOADON_MAHD" class="java.lang.Integer"/>
+	<field name="HOADON_MANV" class="java.lang.Integer"/>
+	<field name="HOADON_MAKH" class="java.lang.Integer"/>
+	<field name="HOADON_NGAYBAN" class="java.sql.Timestamp"/>
+	<field name="HOADON_TONGTIEN" class="java.math.BigDecimal"/>
+	<field name="HOADON_HANGHOA_MAHD" class="java.lang.Integer"/>
+	<field name="HOADON_HANGHOA_MAHH" class="java.lang.Integer"/>
+	<field name="HOADON_HANGHOA_SOLUONG" class="java.lang.Integer"/>
+	<field name="HOADON_HANGHOA_GIABAN" class="java.math.BigDecimal"/>
+	<field name="HOADON_HANGHOA_THANHTIEN" class="java.math.BigDecimal"/>
+	<field name="KHACHHANG_MAKH" class="java.lang.Integer"/>
+	<field name="KHACHHANG_TENKH" class="java.lang.String"/>
+	<field name="KHACHHANG_SODT" class="java.lang.String"/>
+	<field name="NHANVIEN_MANV" class="java.lang.Integer"/>
+	<field name="NHANVIEN_TENNV" class="java.lang.String"/>
+	<field name="KHACHHANG_DIEM" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="149" y="47" width="276" height="36" forecolor="#FF0033" uuid="1be24ef4-c91d-4a39-85ed-6f5b55f88f50"/>
+				<textElement>
+					<font size="23" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN THANH TOÁN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="133" height="29" forecolor="#FF9933" uuid="d5e524ba-35df-403a-9770-7484f7b36b20"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Siêu thị Mỹ Diệu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="29" width="121" height="42" uuid="3e84fb36-b724-4c2c-a698-8ab2e3de96ad"/>
+				<text><![CDATA[804/5 Lê Trọng Tấn, Bình Hưng Hòa, Bình Tân]]></text>
+			</staticText>
+			<image>
+				<reportElement x="472" y="0" width="83" height="75" uuid="64adf747-08ad-4786-87e9-0189af3dc2a4"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\sakura (1).jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="3" width="68" height="20" uuid="fb678a77-63b8-48eb-832b-f8aba7fe6da0"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Số hóa đơn:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="23" width="68" height="19" uuid="798c8fb2-95ab-45d5-9347-3b4d22310536"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Ngày lập:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="42" width="68" height="25" uuid="b27ba41e-ee14-4749-b2f1-63fa81f4c15a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Nhân viên:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="3" width="62" height="20" uuid="f1440a1b-5312-41de-a9f4-9a652bb1ff65"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Khách hàng:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="23" width="62" height="19" uuid="fc42107c-d3a9-426b-8e86-7c821611df1b"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Số điện thoại:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="3" width="61" height="20" uuid="7390525c-04c8-46c9-85be-2dedb6f5c754"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HOADON_MAHD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="3" width="159" height="20" uuid="1c364c49-567a-4af2-a9f7-a4d3ad56ceb5"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KHACHHANG_TENKH}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="88" y="23" width="111" height="19" uuid="a228e60a-19dd-4e38-ba3f-09bab7361fcd"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HOADON_NGAYBAN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="41" width="180" height="24" uuid="fd7afb95-38e7-46a6-8f9f-8197bf7c1571"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NHANVIEN_TENNV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="372" y="23" width="135" height="19" uuid="ca0e9a98-42a5-45fe-a0aa-2a5a3a58e0b7"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KHACHHANG_SODT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="41" width="62" height="19" uuid="c725b640-3217-4632-9d1f-27e1f76b7373"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Điểm đã tich:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="372" y="42" width="70" height="18" uuid="9764e1ae-2067-4c0f-982c-f948cdee2313"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KHACHHANG_DIEM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="28" width="73" height="14" uuid="82ceb085-134e-42b8-ab72-1dc73698ff1f"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="29" width="71" height="15" uuid="808125e1-c9ba-4f44-94b2-2c000af1a365"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="28" width="60" height="15" uuid="ba31e686-449b-40bd-b85a-5bb8f632d7c3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="28" width="88" height="15" uuid="6f816e11-cc68-40a8-8ecd-4bd9cf5efc40"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá bán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="29" width="91" height="14" uuid="55198b55-66d5-4fc2-9351-b34c4a1c0ca6"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<image>
+				<reportElement x="332" y="43" width="10" height="17" uuid="70fc88d3-4b92-4df3-90d6-bfd524bc6e54"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="342" y="43" width="10" height="17" uuid="b1aaf034-5595-4e64-8c7a-fcd89d3206de"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="352" y="43" width="10" height="17" uuid="49979a6a-9915-4882-b025-99064937c911"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="362" y="43" width="10" height="17" uuid="db5c1f0d-96a7-43e9-8ba1-e9fe6be55570"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="372" y="43" width="10" height="17" uuid="89bfd934-80dc-416d-9371-a83757a7ef0b"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="392" y="43" width="10" height="17" uuid="28ed5450-3c60-43bc-805b-299032d7f31b"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="402" y="43" width="10" height="17" uuid="f85fe645-9d52-4b2b-8dd5-bf9b0f430a80"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="422" y="43" width="10" height="17" uuid="b75c431e-835c-4ebf-ac24-008aa96c59ad"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="382" y="43" width="10" height="17" uuid="5e9a9b28-d828-4e75-b659-ae6646cab02c"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="412" y="43" width="10" height="17" uuid="71880fe8-ece0-4bd9-b819-23d911e60fd0"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="442" y="43" width="10" height="17" uuid="c76d48b9-2d91-49de-82a0-110e83d4c1c7"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="452" y="43" width="10" height="17" uuid="0b583276-bfb5-43e8-9bc1-4ece3103e48c"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="472" y="43" width="10" height="17" uuid="e014af9d-b00c-4f6a-9211-bce0d717e252"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="432" y="43" width="10" height="17" uuid="e3cdb07d-552f-40da-8c8c-1c969e60cd15"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="462" y="43" width="10" height="17" uuid="f8f532be-7ef7-4954-94e5-434275621299"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="492" y="43" width="10" height="17" uuid="5eec41a1-0137-4798-afd4-0bfb069e55d6"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="502" y="43" width="10" height="17" uuid="921ede04-dc58-4b43-8d05-679c19531526"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="522" y="43" width="10" height="17" uuid="d96cb1b7-783b-49aa-a53a-a5f9f0be005c"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="482" y="43" width="10" height="17" uuid="f1d04c0b-fcbd-415b-90a1-52406b1131ca"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="512" y="43" width="10" height="17" uuid="ee2026bb-56f1-4172-a331-f12e4c0d749e"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="293" y="43" width="10" height="17" uuid="8ea54c69-e924-45f8-8562-bb465147ece0"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="143" y="43" width="10" height="17" uuid="8bbba436-caef-4666-a8cb-e21462077660"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="223" y="43" width="10" height="17" uuid="23d00e78-adc3-4767-9969-6400d97de2dd"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="243" y="43" width="10" height="17" uuid="c06cab43-5371-41f9-995e-8696f327470f"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="193" y="43" width="10" height="17" uuid="6a87060e-8177-4990-8d7a-1335526ddc03"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="213" y="43" width="10" height="17" uuid="066c8499-a370-44d3-bc02-c5d6785971d7"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="153" y="43" width="10" height="17" uuid="4d4d77f5-e9a7-44d4-8975-1341f549f771"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="313" y="43" width="10" height="17" uuid="64f41df0-cc48-4992-bc7f-298a02cba44e"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="233" y="43" width="10" height="17" uuid="62aa20a2-7962-4b4e-ab64-e234fcb6049b"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="173" y="43" width="10" height="17" uuid="c8302879-d8e4-4063-b1af-c768b59903f6"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="303" y="43" width="10" height="17" uuid="1150de87-526c-437c-ab1c-f4d9417f489f"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="253" y="43" width="10" height="17" uuid="8d9b2309-6e49-4bca-8101-181d606ab715"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="323" y="43" width="10" height="17" uuid="763aa90f-81c1-47b3-830e-02d0986c0831"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="183" y="43" width="10" height="17" uuid="f88739cf-92c0-4dbe-b4a2-40ff8715cfca"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="263" y="43" width="10" height="17" uuid="9166196e-85c0-421a-a59b-826962e32829"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="133" y="43" width="10" height="17" uuid="3297fe97-a5af-45aa-8c70-6b53d4d0d647"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="283" y="43" width="10" height="17" uuid="fd4ef182-b353-46e0-bcb2-4466db1cbfc9"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="203" y="43" width="10" height="17" uuid="84ddc437-62d7-45f1-9e0f-bad8a9fa2d8c"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="273" y="43" width="10" height="17" uuid="b4e2071e-83f7-467d-b190-73ebf644fcf7"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="163" y="43" width="10" height="17" uuid="6d8389d3-e97d-4100-8790-a1f5120fcd0c"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="105" y="43" width="10" height="17" uuid="76e1fb14-29a0-4f12-aac2-c62a2bddf4f0"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="95" y="43" width="10" height="17" uuid="7ea93d7e-e54b-463a-9e79-d9d86b578a69"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="65" y="43" width="10" height="17" uuid="d1651c09-3a27-414d-ac0a-d13c54588535"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="115" y="43" width="10" height="17" uuid="0d0e6297-7cf9-429d-8277-ed62dff2a634"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="85" y="43" width="10" height="17" uuid="d77b8b5f-e020-4c00-a445-d4e947cdb822"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="75" y="43" width="10" height="17" uuid="50776d4f-b1e1-4564-bfe4-c1c93381ee25"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="125" y="43" width="10" height="17" uuid="e09e764d-2b45-4611-906f-502d1ceace69"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="38" y="43" width="10" height="17" uuid="99a88e0e-4ff1-498a-a185-f5490aa374fb"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="48" y="43" width="10" height="17" uuid="45e59b67-6a5d-4b7a-bd32-017cd0f48ade"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="58" y="43" width="10" height="17" uuid="9181073b-0ec7-4491-9d2e-22711390f76a"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="10" y="43" width="10" height="17" uuid="59638d31-1369-4f70-b4e8-d6e07aa23af9"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="20" y="43" width="10" height="17" uuid="cd2e5db2-f1d2-485f-ba36-8977a4aca8d2"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="30" y="43" width="10" height="17" uuid="025a01cd-debd-472b-9612-29509127edd1"/>
+				<imageExpression><![CDATA["D:\\HK6\\JAVA\\Main\\ERD_MOI\\QuanLySieuThi\\src\\Image\\flower_32px.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="0" width="56" height="20" uuid="19559885-b0c3-4f34-9e0b-35e8e103f95e"/>
+				<textFieldExpression><![CDATA[$F{HANGHOA_MAHH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="140" height="20" uuid="fffe4938-d61c-4626-a6e5-429b98c007ba"/>
+				<textFieldExpression><![CDATA[$F{HANGHOA_TENHH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="49" height="20" uuid="e96b186d-eae5-4d7a-8d16-aa595aeb7796"/>
+				<textFieldExpression><![CDATA[$F{HOADON_HANGHOA_SOLUONG}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="330" y="0" width="88" height="20" uuid="1b5a9220-662b-402a-a6b5-c35f33c564a6"/>
+				<textFieldExpression><![CDATA[$F{HANGHOA_GIABAN}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="429" y="0" width="91" height="20" uuid="38770ccb-1329-40c7-aa41-57d4ea501b10"/>
+				<textFieldExpression><![CDATA[$F{HOADON_HANGHOA_THANHTIEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="102" splitType="Stretch">
+			<staticText>
+				<reportElement x="102" y="69" width="357" height="33" forecolor="#0099CC" uuid="0e12a98c-a5fc-4d62-b745-061dd6d4b048"/>
+				<textElement>
+					<font isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Cảm ơn quý khách đã mua hàng tại siêu thị Mỹ Diệu, nếu có thắc mắc xin vui  lòng liên hệ hotline: 0342621112 hoặc qua email huutrung368@gmail.com.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="29" width="66" height="20" forecolor="#CC0066" uuid="33ccd33a-9d45-42fb-83dc-a7bab1eeb1b2"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Thành tiền:]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="407" y="29" width="59" height="20" uuid="f4e1093d-0293-4ff8-b4dd-2d305a63ace6"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HOADON_TONGTIEN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="466" y="29" width="34" height="20" uuid="731f04fc-1efc-481b-ba2d-23ec0eb8ca7a"/>
+				<text><![CDATA[VND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="49" width="215" height="20" uuid="db8523a9-43b9-4c19-935a-036f76ac7af1"/>
+				<text><![CDATA[( Thành tiền đã bao gồm thếu giá trị gia tăng )]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
